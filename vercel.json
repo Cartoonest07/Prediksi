@@ -3,7 +3,8 @@
     "builds": [
       {
         "src": "app.py",
-        "use": "@vercel/python"
+        "use": "@vercel/python",
+        "config": { "python": "3.9" }
       }
     ],
     "routes": [
@@ -11,6 +12,9 @@
         "src": "/(.*)",
         "dest": "app.py"
       }
-    ]
+    ],
+    "scripts": {
+        "postinstall": "pip install distutils"
+    }
   }
   
