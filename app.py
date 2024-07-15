@@ -5,7 +5,7 @@ from flask import Flask, request, jsonify
 app = Flask(__name__)
 
 # Load YOLOv5 model
-model = torch.hub.load('ultralytics/yolov5', 'custom', path="Cartoonest07/Prediksi/best.pt")
+model = torch.hub.load('ultralytics/yolov5', 'custom', path="best.pt")
 
 def measure_height(image_path, model, pixel_to_meter):
     results = model(image_path)
