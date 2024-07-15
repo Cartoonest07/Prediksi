@@ -5,7 +5,7 @@ from flask import Flask, request, jsonify
 app = Flask(__name__)
 
 # Load YOLOv5 model
-model = torch.hub.load('ultralytics/yolov5', 'custom', path="best.pt")
+model = torch.hub.load('ultralytics/yolov5', 'custom', path="path/to/your/model/best.pt")
 
 def measure_height(image_path, model, pixel_to_meter):
     results = model(image_path)
@@ -36,4 +36,4 @@ def measure_height_route():
         return jsonify({'error': 'No object detected'}), 404
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8080)
+    app.run(debug=True, host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))
